@@ -6,6 +6,7 @@ class LiveEvents extends Component {
 		super()
 		this.state = {
 			liveEvents: [],
+			market: '',
 		}
 	}
 	getEvents(){
@@ -18,6 +19,7 @@ class LiveEvents extends Component {
 			w.onmessage = (event) => {
 				this.setState({ liveEvents: JSON.parse(event.data) })		
 			}	
+			w.send(JSON.stringify({ type: "getMarket", id: 93649011 }));
 		}	
 		setInterval( _ =>{
 			w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: true }));
@@ -42,8 +44,14 @@ class LiveEvents extends Component {
 		`;
 		if(this.state.liveEvents.data && Array.isArray(this.state.liveEvents.data)){
 			console.log(this.state.liveEvents.data);
-			var eventList = this.state.liveEvents.data.map(function(e){
-				return <TableCell>{e.name}</TableCell>;
+			var eventList = this.state.liveEvents.data.map(function(event){
+				return <TableRow key={event.eventId}>
+					<TableCell>{event.startTime}</TableCell>
+					<TableCell>{event.competitors[0].name}</TableCell>
+					<TableCell>{event.scores.home}</TableCell>
+					<TableCell>{event.scores.away}</TableCell>
+					<TableCell>{event.competitors[1].name}</TableCell>
+				</TableRow>;			
 			})
 		}
 
@@ -51,6 +59,13 @@ class LiveEvents extends Component {
 			<div>
 			<Table>
 				<TableBody>
+					<TableRow>
+						<TableCell>Start Time</TableCell>
+						<TableCell>Home Team</TableCell>
+						<TableCell>Home Score</TableCell>
+						<TableCell>Away Team</TableCell>
+						<TableCell>Away Score</TableCell>
+					</TableRow>
 					{eventList}
 				</TableBody>
 			</Table>	
