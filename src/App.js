@@ -15,9 +15,9 @@ class App extends Component {
     //   .then(response => this.setState({ username: response.data.results[0].name.first }))
     //.then(response => console.log(response.data.results[0].name.first))
     /* Websocket API */
-    const w = new WebSocket("ws://localhost:8889");
-    w.addEventListener("message", m => console.log(JSON.parse(m.data)));
-    w.onopen = () => w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: false }));
+    // const w = new WebSocket("ws://localhost:8889");
+    // w.addEventListener("message", m => console.log(JSON.parse(m.data)));
+    // w.onopen = () => w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: false }));
   }
   mounted
   render() {
