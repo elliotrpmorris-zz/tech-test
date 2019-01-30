@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
-import './App.css'
+import LiveEvents from './components/LiveEvents'
 
 class App extends Component {
 
@@ -31,6 +31,7 @@ class App extends Component {
       <div className='button__container'>
         <button className='button'>Click Me</button>
         <Title>{this.state.username}</Title>
+        <LiveEvents />
       </div>
     )
   }
