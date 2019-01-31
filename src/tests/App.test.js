@@ -1,9 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../components/App';
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test('Event', () => {
+  // object
+  var event = {
+    data: {
+      name: 'Game',
+      startTime: '1232',
+      linkedEventTypeName: 'test'
+    }
+  }
+  //expect({value: 'value'}).toBeTruthy();
+  expect(typeof event).toBe('object');
+ 
+})

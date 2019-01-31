@@ -41,7 +41,6 @@ class Events extends Component {
 
   render() {
     if (this.state.liveEvents.data && Array.isArray(this.state.liveEvents.data)) {
-      console.log(this.state.liveEvents.data);
       var eventList = this.state.liveEvents.data.map(function (event) {
         return <TableRow key={event.eventId}>
           <TableCell><Link to={`/live-events/${event.eventId}`}>{event.name}</Link></TableCell>

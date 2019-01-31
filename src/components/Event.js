@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 
-const Table = styled.div`
-  display: table;
-  width: 100%;
+const Card = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  padding:15px;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
 `;
 
-const TableBody = styled.div`
-  display: table-row-group;
-`;
-
-const TableRow = styled.div`
-  display: table-row;
-`;
-
-const TableCell = styled.div`
-  border: 1px solid #999999;
-  display: table-cell;
-  padding: 10px;
-`;
 class Event extends Component {
   constructor() {
     super()
@@ -38,35 +32,24 @@ class Event extends Component {
 
   renderEvent(event){
     if (event && event.type === 'EVENT_DATA') {
-      return Object.entries(event).map(([key, e]) => {
         return (
-          <TableRow key={key}>
-          <TableCell>{e.startTime}</TableCell>
-          <TableCell>{e.name}</TableCell>
-          <TableCell>{e.linkedEventTypeName}</TableCell>
-          </TableRow>
+          <div >
+            <h3>{event.data.className} - Event Information</h3>
+            <h4>Name: {event.data.name}</h4> 
+            <p>Start Time: {event.data.startTime}</p> 
+            <h5>Event Type: {event.data.linkedEventTypeName}</h5>
+          </div>
         )
-      })
     }
   }
   
   render() {
     var e = this.state.event;
-    console.log(e.data)
-    
+    console.log(e)
     return (
-      <div>
-         <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>Start Time</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Event Type</TableCell>
-            </TableRow>
-            {this.renderEvent(this.state.event)}
-          </TableBody>
-        </Table>
-      </div>
+      <Card>
+        {this.renderEvent(this.state.event)}  
+      </Card>
     )
   }
 }
