@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => (
   <div>
-    <p>Test</p>
+    <h2>Live events</h2>
   </div>
 )
 export default Home

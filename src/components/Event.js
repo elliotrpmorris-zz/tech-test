@@ -20,11 +20,12 @@ class Event extends Component {
   render() {
     if (this.state.event && this.state.event.type === 'EVENT_DATA') {
       var e = this.state.event;
-      console.log(e.data)
+      console.log(e.data.name)
     }
+
     return (
       <div>
-        <h2>{e.name}</h2>
+        {/* <h2>{e.data.name}</h2> */}
         {/* <TableCell>{event.startTime}</TableCell>
 				// 	<TableCell>{event.competitors[0].name}</TableCell>
 				// 	<TableCell>{event.scores.home}</TableCell>
