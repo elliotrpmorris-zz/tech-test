@@ -2,6 +2,25 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const Table = styled.div`
+  display: table;
+  width: 100%;
+`;
+
+const TableBody = styled.div`
+  display: table-row-group;
+`;
+
+const TableRow = styled.div`
+  display: table-row;
+`;
+
+const TableCell = styled.div`
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 10px;
+`;
+
 class Events extends Component {
   constructor() {
     super()
@@ -21,22 +40,6 @@ class Events extends Component {
   }
 
   render() {
-    const Table = styled.div`
-     	display: table;
-			width: 100%;
-		`;
-    const TableBody = styled.div`
-			display: table-row-group;
-		`;
-    const TableRow = styled.div`
-			display: table-row;
-		`;
-    const TableCell = styled.div`
-			border: 1px solid #999999;
-			display: table-cell;
-			padding: 10px;
-		`;
-
     if (this.state.liveEvents.data && Array.isArray(this.state.liveEvents.data)) {
       console.log(this.state.liveEvents.data);
       var eventList = this.state.liveEvents.data.map(function (event) {

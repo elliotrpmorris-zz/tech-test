@@ -1,5 +1,24 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 
+const Table = styled.div`
+  display: table;
+  width: 100%;
+`;
+
+const TableBody = styled.div`
+  display: table-row-group;
+`;
+
+const TableRow = styled.div`
+  display: table-row;
+`;
+
+const TableCell = styled.div`
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 10px;
+`;
 class Event extends Component {
   constructor() {
     super()
@@ -16,20 +35,37 @@ class Event extends Component {
       }
     }
   }
-  render() {
-    if (this.state.event && this.state.event.type === 'EVENT_DATA') {
-      var e = this.state.event;
-      console.log(e.data.name)
-    }
 
+  renderEvent(event){
+    if (event && event.type === 'EVENT_DATA') {
+      return Object.entries(event).map(([key, e]) => {
+        return (
+          <TableRow key={key}>
+          <TableCell>{e.startTime}</TableCell>
+          <TableCell>{e.name}</TableCell>
+          <TableCell>{e.linkedEventTypeName}</TableCell>
+          </TableRow>
+        )
+      })
+    }
+  }
+  
+  render() {
+    var e = this.state.event;
+    console.log(e.data)
+    
     return (
       <div>
-        {/* <h2>{e.data.name}</h2> */}
-        {/* <TableCell>{event.startTime}</TableCell>
-				// 	<TableCell>{event.competitors[0].name}</TableCell>
-				// 	<TableCell>{event.scores.home}</TableCell>
-				// 	<TableCell>{event.scores.away}</TableCell>
-				// 	<TableCell>{event.competitors[1].name}</TableCell> */}
+         <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>Start Time</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Event Type</TableCell>
+            </TableRow>
+            {this.renderEvent(this.state.event)}
+          </TableBody>
+        </Table>
       </div>
     )
   }
