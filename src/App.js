@@ -1,25 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Main from './components/Main'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-import LiveEvents from './components/LiveEvents'
 
-class App extends Component {
-
-  constructor() {
-    super()
-    this.state = {
-    }
-  }
-  render() {
-    const Container = styled.div`
-      max-width: 1170px;
-      margin: 0 auto;
-    `;
-
-    return (
-      <Container>
-        <LiveEvents />
-      </Container>
-    )
-  }
-}
+const StyledLink = styled(Link)`
+  color: palevioletred;
+  font-weight: bold;
+`;
+const App = () => (
+  <div>
+    <StyledLink to='/live-events'> View Live Events</StyledLink>
+    <StyledLink to='/'>Home</StyledLink>
+    <Main />
+  </div>
+)
 export default App
