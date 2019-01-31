@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+/* Styles */
 const Table = styled.div`
   display: table;
   width: 100%;
@@ -30,10 +31,13 @@ class Events extends Component {
   }
 
   componentDidMount() {
+    /* Create websocket connection */
     const w = new WebSocket("ws://localhost:8889");
     w.onopen = () => {
+      /* Subscribe to live events */
       w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: true }));
       w.onmessage = (event) => {
+        /* Set state with the response data from the web socket */
         this.setState({ liveEvents: JSON.parse(event.data) })
       }
     }
@@ -41,6 +45,7 @@ class Events extends Component {
 
   render() {
     if (this.state.liveEvents.data && Array.isArray(this.state.liveEvents.data)) {
+      /* Loop through each event and return it as var so it can be rendered to the screen */
       var eventList = this.state.liveEvents.data.map(function (event) {
         return <TableRow key={event.eventId}>
           <TableCell><Link to={`/live-events/${event.eventId}`}>{event.name}</Link></TableCell>

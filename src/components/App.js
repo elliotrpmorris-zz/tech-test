@@ -3,6 +3,7 @@ import Main from './Main'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
+/* Styles */
 const StyledLink = styled(Link)`
   color: black;
   font-weight: bold;

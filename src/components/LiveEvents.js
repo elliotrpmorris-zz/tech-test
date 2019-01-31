@@ -3,8 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Events from './Events'
 import Event from './Event'
 
-// The Roster component matches one of two different routes
-// depending on the full pathname
+/* Setting up routes for events */
 const LiveEvents = () => (
   <Switch>
     <Route exact path='/live-events' component={Events} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 
+/* Styles */
 const Card = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -21,10 +22,13 @@ class Event extends Component {
     }
   }
   componentDidMount() {
+    /* Create websocket connection */
     const w = new WebSocket("ws://localhost:8889");
     w.onopen = () => {
+       /* Subscribe to event passing in the current event id */
       w.send(JSON.stringify({ type: "getEvent", id: parseInt(window.location.href.split("/").pop()) }));
       w.onmessage = (event) => {
+         /* Set state with the response data from the web socket */
         this.setState({ event: JSON.parse(event.data) })
       }
     }
