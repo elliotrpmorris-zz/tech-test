@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 class Events extends Component {
   constructor() {
     super()
@@ -18,9 +19,6 @@ class Events extends Component {
         this.setState({ liveEvents: JSON.parse(event.data) })
       }
     }
-    // setInterval( _ =>{
-    //   w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: true }));
-    // },2000 )
   }
 
   render() {

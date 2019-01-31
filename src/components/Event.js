@@ -10,7 +10,6 @@ class Event extends Component {
     }
 
     render() {
-
         return (
             <div>
                 {/* <TableCell>{event.startTime}</TableCell>
