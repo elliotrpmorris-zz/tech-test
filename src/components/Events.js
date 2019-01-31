@@ -13,7 +13,6 @@ class Events extends Component {
   componentDidMount() {
     const w = new WebSocket("ws://localhost:8889");
     w.onopen = () => {
-      w.addEventListener("message", e => (console.log(JSON.parse(e.data))));
       w.send(JSON.stringify({ type: "getLiveEvents", primaryMarkets: true }));
       w.onmessage = (event) => {
         this.setState({ liveEvents: JSON.parse(event.data) })
@@ -42,7 +41,7 @@ class Events extends Component {
       console.log(this.state.liveEvents.data);
       var eventList = this.state.liveEvents.data.map(function (event) {
         return <TableRow key={event.eventId}>
-          <TableCell><Link to={`/event/${event.eventId}`}>{event.name}</Link></TableCell>
+          <TableCell><Link to={`/live-events/${event.eventId}`}>{event.name}</Link></TableCell>
         </TableRow>;
       })
     }

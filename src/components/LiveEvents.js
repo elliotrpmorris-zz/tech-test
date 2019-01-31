@@ -8,7 +8,7 @@ import Event from './Event'
 const LiveEvents = () => (
   <Switch>
     <Route exact path='/live-events' component={Events} />
-    <Route path='/events/:id' component={Event} />
+    <Route path='/live-events/:id' component={Event} />
   </Switch>
 )
 
